@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>StatusBoard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="statusboard" class="statusboard">
+      <div class="container is-fluid">
+        <div class="title is-1">StatusBoard</div>
+        <div class="columns is-multiline">
+          <div class="column" v-for="check in checks" track-by="id">
+            <div class="subtitle is-3">
+              <span>{{ check.name }}</span>
+              <span class="status"
+                v-bind:class="{
+                  'ok': statuses[check.id] === 'OK',
+                  'error': statuses[check.id] === 'error'
+                }"
+              >
+                {{ statuses[check.id] }}
+              </span>
+            </div>
+            <div>{{ check.url }}</div>
+            <div>{{ check.description }}</div>
+            <div id="graph-{{ check.id }}" class="graph"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+    <script src="events.js"></script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+@import 'https://fonts.googleapis.com/css?family=Inconsolata';
+@import 'https://fonts.googleapis.com/css?family=Ropa+Sans';
+
+body {
+  background: #4D606E;
+  color: #F5F5F5;
+  min-height: 100vh;
+  font-family: 'Ropa Sans', sans-serif;
+}
+
+.title {
+  text-align: left;
+  color: #F5F5F5 !important;
+  font-family: 'Ropa Sans', sans-serif;
+}
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #4D606E !important;
+  font-family: 'Ropa Sans', sans-serif;
+  margin-bottom: 5px !important;
+}
+
+a {
+  color: #3FBAC2;
+  text-decoration: none;
+  transition: color 0.2s ease-in;
+}
+
+a:hover, a:active {
+  color: #4D606E;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+.statusboard {
+  padding: 50px;
+  min-height: 50vh;
+  color: #4D606E;
+  background: #4D606E;
+}
+
+.statusboard .column {
+  margin: 20px;
+  padding: 20px;
+  text-align: left;
+  min-height: 100px;
+  min-width: 450px;
+  background: #D3D4D8;
+  box-shadow: 10px 10px 0px 0px #3FBAC2;
+}
+
+.status {
+  color: #F5F5F5;
+  font-style: italic;
+}
+
+.status.ok {
+  color: #3FBAC2;
+}
+
+.status.error {
+  color: #D91E18;
+}
+
+.graph path {
+  stroke: #3FBAC2;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.graph path.error {
+  stroke: #D91E18;
+}
+
+.graph .axis path {
+  stroke: #4D606E;
+  stroke-width: 1;
+  fill: none;
+}
+
+.graph .tick line {
+  stroke: #4D606E;
+  stroke-width: 1;
+  fill: none;
+}
+
+.graph .tick text {
+  fill: #4D606E;
+  font-family: 'Inconsolata', sans-serif;
+}
+
+.graph .axis-label {
+  fill: #4D606E;
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 1.5em;
+}
