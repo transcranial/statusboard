@@ -24,7 +24,7 @@ Add your Slack webhook URL and message settings to the config for error notifica
 go run server.go
 ```
 
-http://localhost:8080
+[http://localhost:8080](http://localhost:8080)
 
 The page will automatically subscribe to update events. Currently it's configured to display events from the most recent hour.
 
