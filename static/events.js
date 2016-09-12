@@ -41,7 +41,7 @@ Vue.http.get('config.json').then(res => {
   config.checks.forEach(check => {
     const id = check.id
 
-    const numDataPoints = 1 + CHART_WINDOW_MINUTES * 60 / check.interval
+    const numDataPoints = CHART_WINDOW_MINUTES * 60 / check.interval
 
     const elem = d3.select(`#graph-${id}`)
     const graph = elem.append('svg:svg')
@@ -99,7 +99,7 @@ Vue.http.get('config.json').then(res => {
 
   source.onmessage = e => {
     const check = JSON.parse(e.data) || {}
-    const numDataPoints = 1 + CHART_WINDOW_MINUTES * 60 / check.interval
+    const numDataPoints = CHART_WINDOW_MINUTES * 60 / check.interval
 
     // update data and graph
     checksData[check.id].unshift(check)
