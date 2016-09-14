@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"net/http/cookiejar"
 	"os"
 	"time"
 )
@@ -139,8 +140,16 @@ func checkRequestChannelListener(broker *Broker) {
 // doRequest performs check requests
 // and sends it to checkResults of Broker
 func doRequest(check *Check, broker *Broker) {
+	jar, err := cookiejar.New(nil)
+	if err != nil {
+		check.Error = err.Error()
+		broker.checkResult <- check
+		return
+	}
+
 	client := http.Client{
 		Timeout: time.Duration(check.Timeout) * time.Millisecond,
+		Jar:     jar,
 	}
 
 	request, err := http.NewRequest(check.Method, check.URL, nil)
