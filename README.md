@@ -10,6 +10,10 @@ The front-end page will automatically subscribe to update events, which are Serv
 
 ## Installing
 
+```
+go get github.com/transcranial/statusboard
+```
+
 **Config**
 
 Modify `static/config.json`. Add as many HTTP/HTTPS endpoints as you need. Each endpoint can be configured with its own status check interval (in seconds), and timeout limit (in milliseconds). The only requirement is that `id` be unique for each endpoint.
@@ -20,7 +24,7 @@ Add your Slack webhook URL and message settings to the config for error notifica
 
 **Start server**
 
-```go
+```
 go run server.go
 ```
 
