@@ -8,6 +8,8 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"path/filepath"
+	"runtime"
 	"time"
 )
 
@@ -212,7 +214,12 @@ func notifySlack(text string) {
 
 func main() {
 	// read from config file
-	configFile, err := os.Open("./static/config.json")
+	_, currentFilePath, _, ok := runtime.Caller(0)
+	if !ok {
+		fmt.Println("Error recovering current file path.")
+	}
+	absConfigFile := filepath.Join(filepath.Dir(currentFilePath), "static/config.json")
+	configFile, err := os.Open(absConfigFile)
 	if err != nil {
 		fmt.Println("Error opening config file:\n", err.Error())
 		os.Exit(1)
@@ -259,7 +266,7 @@ func main() {
 	http.Handle("/events", broker)
 
 	// serve static folder
-	http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.Handle("/", http.FileServer(http.Dir(filepath.Join(filepath.Dir(currentFilePath), "static"))))
 
 	log.Println("Running checks...serving on port 8080.")
 	http.ListenAndServe(":8080", nil)
