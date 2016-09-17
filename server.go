@@ -218,7 +218,7 @@ func main() {
 	if !ok {
 		fmt.Println("Error recovering current file path.")
 	}
-	absConfigFile := filepath.Join(filepath.Dir(currentFilePath), "static/config.json")
+	absConfigFile := filepath.Join(filepath.Dir(currentFilePath), "static", "config.json")
 	configFile, err := os.Open(absConfigFile)
 	if err != nil {
 		fmt.Println("Error opening config file:\n", err.Error())
